@@ -1,0 +1,33 @@
+<div class="container ">
+  <h1 class="text-center mb-5 mt-10">My Todo Data</h1>
+  <div class="form-todo ">
+    <form id="add-todo-form">
+      <div class="form-group d-flex">
+        <input type="text" class="form-control" id="todo-input" placeholder="Enter Todo item">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+    <!-- Form for searching todo -->
+    <form id="search-todo-form">
+      <div class="form-group d-flex">
+        <input type="search" class="form-control" id="search-input" placeholder="Enter search keyword">
+      </div>
+    </form>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Todo</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="todo-table-body">
+        <!-- Dữ liệu Todo sẽ được thêm vào đây -->
+      </tbody>
+    </table>
+  </div>
+
+</div>

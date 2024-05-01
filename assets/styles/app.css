@@ -1,0 +1,20 @@
+.table-responsive {
+  max-height: 300px; 
+  overflow-y: auto; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+}
+.form-todo {
+  width: 660px;
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.8s;
+}
+/* CSS cho mỗi mục Todo */
+/* .todo-item {
+  margin-bottom: 5px;
+  padding: 5px; 
+  border: 1px solid #eee; 
+} */

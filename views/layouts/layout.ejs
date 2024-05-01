@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>New Sails App</title>
+
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <% /* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
+    <% /* <meta name="robots" content="noindex"> */%>
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+      <!--STYLES-->
+      <link rel="stylesheet" href="/styles/app.css">
+      <link rel="stylesheet" href="/styles/importer.css">
+      <!--STYLES END-->
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Todo Base</a>
+    </div>
+  </nav>
+  <div class="container">
+    <%- body %>
+  </div>
+  <script>
+    // Handle form submission
+    document.getElementById('add-todo-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Get the input value
+      const todoInput = document.getElementById('todo-input');
+      const todoValue = todoInput.value.trim();
+
+      // Check if the input is empty
+      if (todoValue === '') {
+        alert('Please enter a Todo item.');
+        return;
+      }
+
+      // Send a request to the server to add the Todo item
+      const response = await fetch('/todos/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ todo: todoValue })
+      });
+
+      // Clear the input field
+      todoInput.value = '';
+
+      // Reload the page to show the updated Todo list
+      location.reload();
+    });
+  </script>
+  <!--SCRIPTS-->
+  <script src="/dependencies/sails.io.js"></script>
+  <script src="/js/app.js"></script>
+  <!--SCRIPTS END-->
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+    integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- boostrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+    integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
